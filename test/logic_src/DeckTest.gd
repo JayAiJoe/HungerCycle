@@ -7,6 +7,25 @@ extends GdUnitTestSuite
 # TestSuite generated from
 const __source = 'res://logic_src/Deck.gd'
 
+var _deck : Deck
+
+func before() -> void:
+	_deck = Deck.new()
+
 func test_get_cards() -> void:
-	# remove this line and complete your test
-	assert_not_yet_implemented()
+	assert_array(_deck.get_cards()).is_empty()
+
+func test_add_card() -> void:
+	_deck.add_card(0)
+	_deck.add_card(0)
+	assert_array(_deck.get_cards()).has_size(2)
+
+func test_remove_card() -> void:
+	_deck.remove_card(0)
+	_deck.remove_card(1)
+	assert_array(_deck.get_cards()).has_size(1)
+
+func after() -> void:
+	for card in _deck.get_cards():
+		card.free()
+	_deck.free()

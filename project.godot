@@ -79,6 +79,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gdUnit3/src/Comparator.gd"
 }, {
+"base": "Object",
+"class": "Deck",
+"language": "GDScript",
+"path": "res://logic_src/Deck.gd"
+}, {
 "base": "GdUnitTestSuite",
 "class": "DeckTest",
 "language": "GDScript",
@@ -594,6 +599,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gdUnit3/src/monitor/GodotGdErrorMonitor.gd"
 }, {
+"base": "Object",
+"class": "Hand",
+"language": "GDScript",
+"path": "res://logic_src/Hand.gd"
+}, {
+"base": "GdUnitTestSuite",
+"class": "HandTest",
+"language": "GDScript",
+"path": "res://test/logic_src/HandTest.gd"
+}, {
 "base": "Fuzzer",
 "class": "IntFuzzer",
 "language": "GDScript",
@@ -719,6 +734,7 @@ _global_script_class_icons={
 "CmdOption": "",
 "CmdOptions": "",
 "Comparator": "",
+"Deck": "",
 "DeckTest": "",
 "DefaultValueProvider": "",
 "EqualsArgumentMatcher": "",
@@ -822,6 +838,8 @@ _global_script_class_icons={
 "GdUnitVector3Assert": "",
 "GdUnitVector3AssertImpl": "",
 "GodotGdErrorMonitor": "",
+"Hand": "",
+"HandTest": "",
 "IntFuzzer": "",
 "JUnitXmlReport": "",
 "LocalTime": "",
@@ -860,6 +878,19 @@ AD="*res://AwesomeDebug.gd"
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/Todo_Manager/plugin.cfg", "res://addons/gdUnit3/plugin.cfg" )
+
+[gdunit3]
+
+templates/testsuite/GDScript="# GdUnit generated TestSuite
+#warning-ignore-all:unused_argument
+#warning-ignore-all:return_value_discarded
+class_name ${suite_class_name}
+extends GdUnitTestSuite
+
+# TestSuite generated from
+const __source = '${source_resource_path}'
+
+func before() -> void:"
 
 [gui]
 

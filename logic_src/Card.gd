@@ -15,7 +15,7 @@ var _effects : Array
 func _init(cid : int = 0) -> void:
 	set_card_data(cid)
 
-# Set this card's info according to the cid and  card database
+# set this card's info according to the cid and  card database
 func set_card_data(cid : int) -> void:
 	_CID = cid
 	# TODO: implement card initialization. replace code below
@@ -44,6 +44,7 @@ func get_description() -> String:
 func get_effects() -> Array:
 	return _effects
 
+# perform the card's play effects
 func play() -> void:
 	# TODO: implement card play method
 	pass
