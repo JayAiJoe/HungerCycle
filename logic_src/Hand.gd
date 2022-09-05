@@ -21,3 +21,7 @@ func add_card(card : Card) -> void:
 func remove_card(card : Card) -> void:
 	if card in _cards:
 		_cards.erase(card)
+
+# return card count
+func get_card_count() -> int:
+	return _cards.size()

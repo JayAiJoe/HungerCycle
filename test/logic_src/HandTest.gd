@@ -26,7 +26,13 @@ func test_remove_card() -> void:
 	_hand.remove_card(_temp_cards[2])
 	assert_array(_hand.get_cards()).has_size(1)
 
+func test_get_card_count() -> void:
+	_hand.add_card(_temp_cards[2])
+	assert_int(_hand.get_card_count()).is_equal(2)
+
 func after() -> void:
 	for card in _temp_cards:
 		card.free()
 	_hand.free()
+
+

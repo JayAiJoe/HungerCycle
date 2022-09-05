@@ -624,6 +624,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gdUnit3/src/core/LocalTime.gd"
 }, {
+"base": "Object",
+"class": "Pile",
+"language": "GDScript",
+"path": "res://logic_src/Pile.gd"
+}, {
+"base": "GdUnitTestSuite",
+"class": "PileTest",
+"language": "GDScript",
+"path": "res://test/logic_src/PileTest.gd"
+}, {
 "base": "Reference",
 "class": "RPC",
 "language": "GDScript",
@@ -843,6 +853,8 @@ _global_script_class_icons={
 "IntFuzzer": "",
 "JUnitXmlReport": "",
 "LocalTime": "",
+"Pile": "",
+"PileTest": "",
 "RPC": "",
 "RPCClientConnect": "",
 "RPCClientDisconnect": "",

@@ -24,4 +24,7 @@ func remove_card(cid : int) -> void:
 		if card.get_CID() == cid:
 			_cards.erase(card)
 			return
-		
+
+# return card count
+func get_card_count() -> int:
+	return _cards.size()
