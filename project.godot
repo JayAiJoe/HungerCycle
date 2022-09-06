@@ -644,6 +644,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://test/logic_src/PileTest.gd"
 }, {
+"base": "Object",
+"class": "Player",
+"language": "GDScript",
+"path": "res://logic_src/Player.gd"
+}, {
+"base": "GdUnitTestSuite",
+"class": "PlayerTest",
+"language": "GDScript",
+"path": "res://test/logic_src/PlayerTest.gd"
+}, {
 "base": "Reference",
 "class": "RPC",
 "language": "GDScript",
@@ -907,6 +917,8 @@ _global_script_class_icons={
 "LocalTime": "",
 "Pile": "",
 "PileTest": "",
+"Player": "",
+"PlayerTest": "",
 "RPC": "",
 "RPCClientConnect": "",
 "RPCClientDisconnect": "",
@@ -949,7 +961,7 @@ AD="*res://AwesomeDebug.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/GodotTIE/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/gdUnit3/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/Todo_Manager/plugin.cfg", "res://addons/gdUnit3/plugin.cfg" )
 
 [gdunit3]
 
