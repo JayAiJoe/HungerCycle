@@ -79,6 +79,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/gdUnit3/src/Comparator.gd"
 }, {
+"base": "RingCharacter",
+"class": "Customer",
+"language": "GDScript",
+"path": "res://logic_src/Customer.gd"
+}, {
+"base": "GdUnitTestSuite",
+"class": "CustomerTest",
+"language": "GDScript",
+"path": "res://test/logic_src/CustomerTest.gd"
+}, {
 "base": "Object",
 "class": "Deck",
 "language": "GDScript",
@@ -687,37 +697,47 @@ _global_script_classes=[ {
 "base": "Object",
 "class": "Ring",
 "language": "GDScript",
-"path": "res://test/logic_src/Ring.gd"
+"path": "res://logic_src/Ring.gd"
 }, {
 "base": "Object",
 "class": "RingCharacter",
 "language": "GDScript",
-"path": "res://test/logic_src/RingCharacter.gd"
+"path": "res://logic_src/RingCharacter.gd"
 }, {
 "base": "GdUnitTestSuite",
 "class": "RingCharacterTest",
 "language": "GDScript",
-"path": "res://test/test/logic_src/RingCharacterTest.gd"
+"path": "res://test/logic_src/RingCharacterTest.gd"
 }, {
 "base": "RingCharacter",
 "class": "RingDoor",
 "language": "GDScript",
-"path": "res://test/logic_src/RingDoor.gd"
+"path": "res://logic_src/RingDoor.gd"
 }, {
 "base": "GdUnitTestSuite",
 "class": "RingDoorTest",
 "language": "GDScript",
-"path": "res://test/test/logic_src/RingDoorTest.gd"
+"path": "res://test/logic_src/RingDoorTest.gd"
 }, {
 "base": "GdUnitTestSuite",
 "class": "RingTest",
 "language": "GDScript",
-"path": "res://test/test/logic_src/RingTest.gd"
+"path": "res://test/logic_src/RingTest.gd"
 }, {
 "base": "Resource",
 "class": "SignalHandler",
 "language": "GDScript",
 "path": "res://addons/gdUnit3/src/core/event/SignalHandler.gd"
+}, {
+"base": "RingCharacter",
+"class": "Staffer",
+"language": "GDScript",
+"path": "res://logic_src/Staffer.gd"
+}, {
+"base": "GdUnitTestSuite",
+"class": "StafferTest",
+"language": "GDScript",
+"path": "res://test/logic_src/StafferTest.gd"
 }, {
 "base": "Fuzzer",
 "class": "StringFuzzer",
@@ -774,6 +794,8 @@ _global_script_class_icons={
 "CmdOption": "",
 "CmdOptions": "",
 "Comparator": "",
+"Customer": "",
+"CustomerTest": "",
 "Deck": "",
 "DeckTest": "",
 "DefaultValueProvider": "",
@@ -902,6 +924,8 @@ _global_script_class_icons={
 "RingDoorTest": "",
 "RingTest": "",
 "SignalHandler": "",
+"Staffer": "",
+"StafferTest": "",
 "StringFuzzer": "",
 "TimeUnit": "",
 "ValueProvider": "",
@@ -925,7 +949,7 @@ AD="*res://AwesomeDebug.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/Todo_Manager/plugin.cfg", "res://addons/gdUnit3/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/GodotTIE/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/gdUnit3/plugin.cfg" )
 
 [gdunit3]
 
@@ -938,7 +962,10 @@ extends GdUnitTestSuite
 # TestSuite generated from
 const __source = '${source_resource_path}'
 
-func before() -> void:"
+func before() -> void:
+	pass
+	
+"
 
 [gui]
 
