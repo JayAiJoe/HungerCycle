@@ -7,6 +7,7 @@ class_name Ring
 
 var _characters : Array
 var _door : RingDoor
+var _current_character : RingCharacter
 
 func _init() -> void:
 	_characters = []
@@ -14,10 +15,14 @@ func _init() -> void:
 	_door.set_left(_door)
 	_door.set_right(_door)
 	_characters.append(_door)
+	_current_character = _door
 
 # return unordered list of characters
 func get_characters() -> Array:
 	return _characters
+
+func get_current_character() -> RingCharacter:
+	return _current_character
 
 func get_character_count() -> int:
 	return _characters.size()

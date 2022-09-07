@@ -15,12 +15,28 @@ var _money : int
 var _flow : int
 var _flow_element : int
 
-func _init() -> void:
-	pass
+var _turn_draw : int
 
+func _init() -> void:
+	# TODO adjust initilaization values
+	_starting_deck = Deck.new()
+	_draw_pile = Pile.new()
+	_discard_pile = Pile.new()
+	_hand = Hand.new()
+	_staff = []
+	_reputation = 0
+	_money = 0
+	_turn_draw = 3
+	
+	Events.connect("phase_changed" , self, "handle_phase")
+	
+	
 # Setters
 func set_starting_deck(deck : Deck) -> void:
 	_starting_deck = deck
+
+func set_starting_deck_with_cids(cids : Array) -> void:
+	_starting_deck = Deck.new(cids)
 
 func set_draw_pile(pile : Pile) -> void:
 	_draw_pile = pile
@@ -74,21 +90,44 @@ func remove_staff(sid : int) -> void:
 
 # play a card
 func play_card(card : Card) -> void:
-	card.play()
+	if card in _hand.get_cards():
+		card.play()
 
 # draw a card from pile (default: _draw_pile) then add to _hand
 func draw_card(pile : Pile = _draw_pile) -> void:
-	var new_card = pile.draw_card()
-	_hand.add_card(new_card)
+	if pile.get_card_count() > 0:
+		var new_card = pile.draw_card()
+		_hand.add_card(new_card)
+	elif pile == _draw_pile:
+		reshuffle_discard_to_draw_pile()
+		draw_card()
 
 # discard a card from hand then add to pile (default: _discard_pile)
 func discard_card(card: Card, pile : Pile = _discard_pile) -> void:
-	_hand.remove_card(card)
-	pile.add_card(card)
+	if card in _hand.get_cards():
+		_hand.remove_card(card)
+		pile.add_card(card)
 
 # shuffles discard pile then adds it back to the draw pile
 func reshuffle_discard_to_draw_pile() -> void:
 	_discard_pile.shuffle()
-	for card in _discard_pile:
+	while _discard_pile.get_card_count() > 0:
+		_draw_pile.add_card(_discard_pile.get_cards().pop_front())
+
+# set the draw pile to the shuffled deck and discard pile to empty
+func set_deck_to_piles() -> void:
+	_draw_pile.get_cards().clear()
+	_discard_pile.get_cards().clear()
+	for card in _starting_deck.get_cards():
 		_draw_pile.add_card(card)
-	
+	_draw_pile.shuffle()
+
+# perform turn phase actions (i.e. draw at turn start, discard hand at turn end)
+func handle_phase(phase):
+	match(phase):
+		Enums.Phases.TURN_START:
+			for i in range(_turn_draw):
+				draw_card()
+		Enums.Phases.TURN_END:
+			while _hand.get_card_count() > 0:
+				discard_card(_hand.get_cards()[0])

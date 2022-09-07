@@ -24,6 +24,7 @@ func set_card_data(cid : int) -> void:
 	_name = "Empty Card"
 	_description = "No Description"
 	_effects = []
+	_effects.append(DiscardCommand.new(self)) # all cards discard after play be default
 
 # Getters
 func get_CID() -> int:
@@ -47,4 +48,4 @@ func get_effects() -> Array:
 # perform the card's play effects
 func play() -> void:
 	# TODO: implement card play method
-	pass
+	Events.emit_signal("card_played", self)

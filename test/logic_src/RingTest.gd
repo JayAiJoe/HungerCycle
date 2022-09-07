@@ -24,6 +24,9 @@ func test_get_character_count() -> void:
 func test_get_door() -> void:
 	assert_object(_ring.get_door()).is_instanceof(RingDoor)
 
+func test_get_current_character() -> void:
+	assert_object(_ring.get_current_character()).is_same(_ring.get_door())
+
 func test_insert_character_left() -> void:
 	_ring.insert_character_left(_left)
 	assert_object(_ring.get_door().get_left()).is_same(_left)
@@ -53,3 +56,5 @@ func after() -> void:
 	_left.free()
 	_right.free()
 	
+
+

@@ -7,8 +7,10 @@ class_name Deck
 
 var _cards : Array
 
-func _init() -> void:
+func _init(cids : Array = []) -> void:
 	_cards = []
+	for cid in cids:
+		_cards.append(Card.new(cid))
 
 # return all cards in this deck
 func get_cards() -> Array:
