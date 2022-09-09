@@ -2,6 +2,7 @@ extends Node2D
 class_name CardAvatar
 
 signal hovered(card, state)
+signal selected(card)
 
 onready var cardsUI := get_parent()
 
@@ -49,19 +50,22 @@ func go_to_pile(location : Vector2, mid_point = null) -> void:
 		p1 = Vector2((position.x + location.x) * 2/5, position.y - 300)
 	set_process(true)
 	animation_locked = true
+	$Visuals.position = Vector2.ZERO
+	$Visuals.rotation_degrees = 0.0
+	
+	
 
 func focus() -> void:
 	z_index = 100
-	rotation = 0.0
 	var tween = create_tween().set_trans(Tween.TRANS_QUAD)
 	tween.tween_property($Visuals, "position", Vector2(0, -50), 0.1)
-	tween.tween_property($Visuals, "rotation", 0.0, 0.05)
+	tween.tween_property($Visuals, "rotation_degrees", 0.0, 0.01)
 
 func unfocus() -> void:
 	z_index = hand_z_index
 	var tween = create_tween().set_trans(Tween.TRANS_QUAD)
 	tween.tween_property($Visuals, "position", Vector2.ZERO, 0.1)
-	tween.tween_property($Visuals, "rotation", hand_rotation, 0.05)
+	tween.tween_property($Visuals, "rotation_degrees", hand_rotation, 0.01)
 
 # slide visuals in the given direction
 # 1 right, -1 left
@@ -76,9 +80,9 @@ func slide_back() -> void:
 func move_and_rotate(location : Vector2, degrees : float) -> void:
 	var tween = create_tween().set_trans(Tween.TRANS_QUAD)
 	tween.tween_property(self, "position", location, 0.2)
-	# TODO: Fix rotations
-#	tween.tween_property(self, "rotation_degrees", degrees, 0.2)
-#	hand_rotation = degrees
+	hand_rotation = degrees
+	tween.tween_property($Visuals, "rotation_degrees", hand_rotation, 0.01)
+	
 
 func _process(delta):
 	t += delta * 2
@@ -94,3 +98,11 @@ func _on_Area2D_mouse_entered() -> void:
 
 func _on_Area2D_mouse_exited() -> void:
 	emit_signal("hovered", self, false)
+
+
+func _on_Area2D_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if on_hand:
+		if event is InputEventMouseButton and event.pressed:
+			match event.button_index:
+				BUTTON_LEFT:
+					emit_signal("selected", self)

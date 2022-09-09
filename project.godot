@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://2D_interface/CardAvatar.gd"
 }, {
+"base": "Area2D",
+"class": "CardPlayArea",
+"language": "GDScript",
+"path": "res://2D_interface/CardPlayArea.gd"
+}, {
 "base": "GdUnitTestSuite",
 "class": "CardTest",
 "language": "GDScript",
@@ -836,6 +841,7 @@ _global_script_class_icons={
 "CallBackValueProvider": "",
 "Card": "",
 "CardAvatar": "",
+"CardPlayArea": "",
 "CardTest": "",
 "ChainedArgumentMatcher": "",
 "CmdArgumentParser": "",
