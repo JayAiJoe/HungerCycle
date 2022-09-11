@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/samplechar/char1.png" type="Texture" id=1]
+[ext_resource path="res://3D_environment/CharacterAvatar.gd" type="Script" id=2]
+
+[node name="CharacterAvatar" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+offset = Vector2( 0, 512 )
+pixel_size = 0.002
+billboard = 1
+texture = ExtResource( 1 )

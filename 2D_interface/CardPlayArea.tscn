@@ -3,7 +3,7 @@
 [ext_resource path="res://2D_interface/CardPlayArea.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 153.5, 135 )
+extents = Vector2( 960, 300 )
 
 [node name="CardPlayArea" type="Area2D"]
 script = ExtResource( 1 )

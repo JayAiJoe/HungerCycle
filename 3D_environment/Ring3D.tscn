@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://3D_environment/Ring3D.gd" type="Script" id=2]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 50, 50 )
+
+[node name="Ring3D" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Ground" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0 )
+omni_range = 20.0
+
+[node name="CameraPivot" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.819012, 0.573777, 0, -0.573777, 0.819012, 0, 0.7, 3 )
+
+[node name="Camera" type="Camera" parent="CameraPivot"]
+transform = Transform( 1, 0, 0, 0, 0.985426, -0.170106, 0, 0.170106, 0.985426, 0, 0, 2 )
+current = true

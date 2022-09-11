@@ -9,7 +9,7 @@ const HAND_DEGREE_UNIT := 2.0
 const HAND_Y_OFFSET_UNIT := 17.0
 const VALID_COLOR := Color("A4DE02")
 
-var Card = preload("res://2D_interface/CardAvatar.tscn")
+export var Card = preload("res://2D_interface/CardAvatar.tscn")
 
 var draw := []
 var hand := []

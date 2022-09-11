@@ -4,10 +4,12 @@
 [ext_resource path="res://assets/line_dot.png" type="Texture" id=2]
 [ext_resource path="res://assets/line_arrow.png" type="Texture" id=3]
 [ext_resource path="res://2D_interface/CardPlayArea.tscn" type="PackedScene" id=4]
-[ext_resource path="res://icon.png" type="Texture" id=5]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.992857, 0.509091 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 210, 290 )
 
 [node name="CardsUI" type="Node2D"]
 script = ExtResource( 1 )
@@ -27,14 +29,9 @@ texture = ExtResource( 2 )
 texture_mode = 1
 
 [node name="CardPlayArea" parent="." instance=ExtResource( 4 )]
-position = Vector2( 664, 384 )
+position = Vector2( 960, 460 )
 
 [node name="CollisionShape2D" parent="CardPlayArea" index="0"]
-position = Vector2( -74.5, -99 )
-
-[node name="Sprite" type="Sprite" parent="CardPlayArea"]
-position = Vector2( -75.5, -96 )
-scale = Vector2( 4.70313, 4.25 )
-texture = ExtResource( 5 )
+shape = SubResource( 2 )
 
 [editable path="CardPlayArea"]
